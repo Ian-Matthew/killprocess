@@ -1,47 +1,110 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import React from 'react'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import React from "react";
 export default function Home() {
-  const [port, setPort] = React.useState(null)
-  const debouncedPortVal = useDebounce(port, 300)
-  const [command, setCommand] = React.useState(formatCopyCommand(port))
-  const inputRef = React.useRef(null)
-  const otherRef = React.useRef(null)
+  const [port, setPort] = React.useState(null);
+  const debouncedPortVal = useDebounce(port, 500);
+  const [command, setCommand] = React.useState(formatCopyCommand(port));
+  const commandRef = React.useRef(null);
+  const portRef = React.useRef(null);
+  const [copied, setCopied] = React.useState(false);
   const copyOnChange = (e) => {
-  e.preventDefault();
-  setPort(e.target.value)
+    e.preventDefault();
+    setCopied(false);
+    setPort(e.target.value);
+  };
+  function copyCode() {
+    setCopied(true);
+    commandRef.current.select();
+    document.execCommand("copy");
+  }
+  function inputPress(e) {
+    if(portRef.current === document.activeElement && e.charCode === 13){
+      copyCode()
+    }
   }
   React.useEffect(() => {
-    if(debouncedPortVal) {
-      inputRef.current.value = formatCopyCommand(debouncedPortVal)
-      setCommand(inputRef.current.value)
-    }
-    else{
-      inputRef.current.value = null
-      setCommand(formatCopyCommand(null))
-    }
-  },[debouncedPortVal])
+    setCommand(formatCopyCommand(port));
+  }, [port]);
+
   React.useEffect(() => {
-    if(otherRef.current){
-      otherRef.current.focus()
+    if (portRef.current) {
+      portRef.current.focus();
     }
-  },[otherRef.current])
+  }, [portRef.current]);
   return (
-    <div className="min-h-screen h-full flex flex-col items-center justify-center">
-      <div className="flex flex-col font-mono max-w-prose w-full">
-      <input className="absolute opacity-0 pointer-events-none -left-full" value={port} ref={inputRef} type="text"/>
-      <input autoFocus={true} onChange={copyOnChange} ref={otherRef} className="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-green-200 border-solid border-2" placeholder="Port Number" type="text"/>
-      <code className="bg-gray-800 p-2 mt-6 text-white text-sm flex flex-row items-center justify-between">
-        <div><span className='select-none'>~ </span>{command}</div>
-        <button className='select-none'>copy again</button>
-      </code>
+    <div 
+    className="min-h-screen h-full flex flex-col items-center justify-center relative">
+      {/* <div className="absolute w-full h-full bg-gray-800 bg-opacity-20"></div> */}
+
+      <div className="m-auto h-full w-full max-w-prose flex flex-col items-center justify-center space-y-3">
+        <div className="flex flex-col font-mono w-full relative">
+          <h1 className="text-4xl font-extralight mb-4 font-serif">
+            kill process on port {port}
+          </h1>
+
+          <input
+            className="absolute opacity-0 pointer-events-none -left-full"
+            value={command}
+            ref={commandRef}
+            readOnly
+            type="text"
+          />
+          <input
+            max={65535}
+            min={0}
+            autoFocus={true}
+            onChange={copyOnChange}
+            onKeyPress={inputPress}
+            ref={portRef}
+            value={port}
+            className="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-green-200 border-solid border-2"
+            placeholder="port number"
+            type="number"
+          />
+        </div>
+        <div className="w-full text-sm font-serif space-x-2 flex">
+          <div>1.) copy command below </div>
+          <div>2.) paste in terminal</div>
+        </div>
+        <code
+          onClick={copyCode}
+          className="bg-gray-800 hover:bg-gray w-full cursor-pointer p-2 text-white text-sm flex flex-row items-center justify-between"
+        >
+          <div>
+            <span className="select-none">~ </span>
+            {command}
+          </div>
+          {port && (
+            <button
+              onClick={copyCode}
+              className="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 rounded-  focus:ring-green-200 px-2"
+            >
+              <svg
+                className="h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+              <span>{copied ? "copied!" : "copy"}</span>
+            </button>
+          )}
+        </code>
       </div>
     </div>
-  )
+  );
 }
 
-function formatCopyCommand(port){
-  return `lsof -ti :${port || "{PORT}"} | xargs kill`
+function formatCopyCommand(port) {
+  return `lsof -ti :${port || "{PORT}"} | xargs kill`;
 }
 
 // Credit to ... https://usehooks.com/useDebounce/
