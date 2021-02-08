@@ -3,6 +3,9 @@ import styles from "../styles/Home.module.css";
 import React from "react";
 import { useDebounce } from "../utils/hooks";
 import * as NextLink from "next/link";
+import { Navigation } from "../components/Navigation";
+import "twin.macro";
+
 export default function Home() {
   // Track port
   const [port, setPort] = React.useState(null);
@@ -46,25 +49,18 @@ export default function Home() {
   }, [portInputRef.current]);
 
   return (
-    <div className="min-h-screen h-full flex flex-col items-center justify-center relative mx-5">
-      <div className="flex flex-row w-full justify-end items-center max-w-screen-xl mt-5">
-        <div className="flex flex-row items-center space-x-3 ">
-          <div className="font-bold cursor-pointer">home</div>
-          <div className="cursor-pointer">bash script</div>
-          <div className="cursor-pointer">about</div>
-          <div className="cursor-not-allowed  text-black text-opacity-50">
-            windows <span className="text-xs">(coming soon...)</span>
-          </div>
-        </div>
+    <div tw="min-h-screen h-full flex flex-col items-center justify-center relative mx-5">
+      <div tw="flex flex-row w-full justify-end items-center max-w-screen-xl mt-5">
+        <Navigation></Navigation>
       </div>
-      <div className="m-auto h-full w-full max-w-prose flex flex-col items-center justify-center space-y-3">
-        <div className="flex flex-col font-mono w-full relative">
-          <h1 className="text-4xl font-extralight mb-4 font-serif">
+      <div tw="m-auto h-full w-full max-w-prose flex flex-col items-center justify-center space-y-3">
+        <div tw="flex flex-col font-mono w-full relative">
+          <h1 tw="text-2xl font-extralight mb-4">
             kill process on port {port}
           </h1>
 
           <input
-            className="absolute opacity-0 pointer-events-none -left-full"
+            tw="absolute opacity-0 pointer-events-none -left-full"
             value={command}
             ref={commandCopyRef}
             readOnly
@@ -78,27 +74,23 @@ export default function Home() {
             onKeyPress={inputPress}
             ref={portInputRef}
             value={port}
-            className="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-green-200 border-solid border-2"
+            tw="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-pink-200 border-solid border-2"
             placeholder="port number"
             type="number"
           />
         </div>
-        <div className="w-full text-sm font-serif space-x-2 flex">
-          <div>1.) copy command below </div>
-          <div>2.) paste in terminal</div>
-        </div>
-        <code className="bg-gray-800 hover:bg-gray w-full  p-2 text-white text-sm flex flex-row items-center justify-between">
+        <code tw="bg-gray-800  w-full  p-2 text-white text-sm flex flex-row items-center justify-between">
           <div>
-            <span className="select-none">~ </span>
+            <span tw="select-none">~ </span>
             {command}
           </div>
           {port && (
             <button
               onClick={copyCode}
-              className="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 rounded-  focus:ring-green-200 px-2"
+              tw="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 focus:ring-pink-200 px-2"
             >
               <svg
-                className="h-4"
+                tw="h-4"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -123,16 +115,3 @@ export default function Home() {
 function formatCopyCommand(port) {
   return `lsof -ti :${port || "{PORT}"} | xargs kill`;
 }
-
-const Link = (props) => {
-  const { disabled } = props;
-  return (
-    <NextLink {...props}>
-      <a
-        className={`${
-          disabled ? "cursor-not-allowed font-normal" : "cursor-pointer"
-        } font-`}
-      ></a>
-    </NextLink>
-  );
-};
