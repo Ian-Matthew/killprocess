@@ -1,10 +1,12 @@
 import { GlobalStyles } from "twin.macro";
-
+import { Layout } from "../components/Layout";
 function MyApp({ Component, pageProps }) {
   return (
     <div>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </div>
   );
 }

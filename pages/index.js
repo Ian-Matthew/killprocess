@@ -49,66 +49,67 @@ export default function Home() {
   }, [portInputRef.current]);
 
   return (
-    <div tw="min-h-screen h-full flex flex-col items-center justify-center relative mx-5">
-      <div tw="flex flex-row w-full justify-end items-center max-w-screen-xl mt-5">
-        <Navigation></Navigation>
-      </div>
-      <div tw="m-auto h-full w-full max-w-prose flex flex-col items-center justify-center space-y-3">
-        <div tw="flex flex-col font-mono w-full relative">
-          <h1 tw="text-2xl font-extralight mb-4">
-            kill process on port {port}
-          </h1>
+    <>
+      <Head>
+        <title>Kill Process</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="A simple way to kill a process running on a port"
+        />
+      </Head>
+      <div tw="flex flex-col font-mono w-full relative">
+        <h1 tw="text-2xl font-extralight mb-4">kill process on port {port}</h1>
 
-          <input
-            tw="absolute opacity-0 pointer-events-none -left-full"
-            value={command}
-            ref={commandCopyRef}
-            readOnly
-            type="text"
-          />
-          <input
-            max={65535}
-            min={0}
-            autoFocus={true}
-            onChange={copyOnChange}
-            onKeyPress={inputPress}
-            ref={portInputRef}
-            value={port}
-            tw="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-pink-200 border-solid border-2"
-            placeholder="port number"
-            type="number"
-          />
-        </div>
-        <code tw="bg-gray-800  w-full  p-2 text-white text-sm flex flex-row items-center justify-between">
-          <div>
-            <span tw="select-none">~ </span>
-            {command}
-          </div>
-          {port && (
-            <button
-              onClick={copyCode}
-              tw="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 focus:ring-pink-200 px-2"
-            >
-              <svg
-                tw="h-4"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
-                />
-              </svg>
-              <span>{copied ? "copied!" : "copy"}</span>
-            </button>
-          )}
-        </code>
+        <input
+          tw="absolute opacity-0 pointer-events-none -left-full"
+          value={command}
+          ref={commandCopyRef}
+          readOnly
+          type="text"
+        />
+        <input
+          max={65535}
+          min={0}
+          autoFocus={true}
+          onChange={copyOnChange}
+          onKeyPress={inputPress}
+          ref={portInputRef}
+          value={port}
+          tw="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-pink-200 border-solid border-2"
+          placeholder="port number"
+          type="number"
+        />
       </div>
-    </div>
+      <code tw="bg-gray-800  w-full  p-2 text-white text-sm flex flex-row items-center justify-between">
+        <div>
+          <span tw="select-none">~ </span>
+          {command}
+        </div>
+        {port && (
+          <button
+            onClick={copyCode}
+            tw="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 focus:ring-pink-200 px-2"
+          >
+            <svg
+              tw="h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+              />
+            </svg>
+            <span>{copied ? "copied!" : "copy"}</span>
+          </button>
+        )}
+      </code>
+    </>
   );
 }
 

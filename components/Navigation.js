@@ -9,7 +9,6 @@ export function Navigation() {
       <div tw="flex flex-row items-center space-x-3 ">
         <NavLink href="/">home</NavLink>
         <NavLink href="/bash">bash script</NavLink>
-        <NavLink href="/about">about</NavLink>
       </div>
     </div>
   );
@@ -17,15 +16,13 @@ export function Navigation() {
 
 const NavLink = ({ href, children, ...props }) => {
   const router = useRouter();
-  console.log(href);
-  console.log(router.pathname);
   const active = router.pathname === href;
   const styles = [
     tw`cursor-pointer hover:text-black text-gray-500 font-light`,
     active && tw`text-pink-500 hover:text-pink-500 font-medium`,
   ];
   return (
-    <Link href={href}>
+    <Link {...props} href={href}>
       <a css={styles}>{children}</a>
     </Link>
   );
