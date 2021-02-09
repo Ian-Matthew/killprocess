@@ -68,7 +68,7 @@ export default function Home() {
           type="text"
         />
         <div className="relative flex items-center justify-between flex-row flex-1 w-full">
-          <div className="absolute right-10 text-xs text-gray-400 overflow-hidden">
+          <div className="absolute right-5 text-xs text-gray-400 overflow-hidden">
             <div className="relative">
               <span>
                 <strong className="font-medium">return/enter</strong> to copy
