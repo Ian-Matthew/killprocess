@@ -15,14 +15,14 @@ export default function Bash() {
       </Head>
       <p>Add to .bashrc/.zshrc</p>
 
-      <pre tw="bg-gray-800  w-full  p-2 text-white text-sm ">
+      <code tw="bg-gray-800  w-full  p-2 text-white text-sm ">
         <div></div>
         {`function kill-port(){`}
         <br />
         <span>&#9;{`lsof -ti :$1 | xargs kill`}</span>
         <br />
         {`}`}
-      </pre>
+      </code>
       <p>Then: </p>
 
       <code tw="bg-gray-800  w-full  p-2 text-white text-sm">

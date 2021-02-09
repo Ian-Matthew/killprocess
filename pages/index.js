@@ -1,10 +1,7 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import React from "react";
 import { useDebounce } from "../utils/hooks";
-import * as NextLink from "next/link";
-import { Navigation } from "../components/Navigation";
-import "twin.macro";
+import tw from "twin.macro";
 
 export default function Home() {
   // Track port
@@ -58,8 +55,10 @@ export default function Home() {
           content="A simple way to kill a process running on a port"
         />
       </Head>
-      <div tw="flex flex-col font-mono w-full relative">
-        <h1 tw="text-2xl font-extralight mb-4">kill process on port {port}</h1>
+      <div tw="flex flex-col w-full relative">
+        <h1 tw="text-2xl font-extralight mb-4 animate-fade-out-down">
+          kill process on port {port}
+        </h1>
 
         <input
           tw="absolute opacity-0 pointer-events-none -left-full"
@@ -68,22 +67,37 @@ export default function Home() {
           readOnly
           type="text"
         />
-        <input
-          max={65535}
-          min={0}
-          autoFocus={true}
-          onChange={copyOnChange}
-          onKeyPress={inputPress}
-          ref={portInputRef}
-          value={port}
-          tw="text-lg flex-1 p-2 border-black focus:outline-none focus:ring focus:ring-pink-200 border-solid border-2"
-          placeholder="port number"
-          type="number"
-        />
+        <div tw="relative flex items-center justify-between flex-row flex-1 w-full">
+          <div tw="absolute right-10 text-xs text-gray-400 overflow-hidden">
+            <div tw="relative">
+              <span tw="font-medium">return/enter</span> to copy
+              <span
+                css={[
+                  tw`absolute flex justify-end top-0 left-0 w-full bg-white transition-transform transform -translate-y-full`,
+                  copied && tw`translate-y-0 animate-fade-out-down`,
+                ]}
+              >
+                copied!
+              </span>
+            </div>
+          </div>
+          <input
+            max={65535}
+            min={0}
+            autoFocus={true}
+            onChange={copyOnChange}
+            onKeyPress={inputPress}
+            ref={portInputRef}
+            value={port}
+            tw="text-lg w-full p-2 border-black focus:outline-none focus:ring focus:ring-pink-200 border-solid border-2"
+            placeholder="port number"
+            type="number"
+          />
+        </div>
       </div>
       <code tw="bg-gray-800  w-full  p-2 text-white text-sm flex flex-row items-center justify-between">
         <div>
-          <span tw="select-none">~ </span>
+          <span tw="select-none text-pink-400">~ </span>
           {command}
         </div>
         {port && (
