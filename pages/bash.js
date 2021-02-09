@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import "twin.macro";
 
 export default function Bash() {
   return (
@@ -13,20 +12,19 @@ export default function Bash() {
           content="A simple way to kill a process running on a port using a bash script."
         />
       </Head>
-      <p>Add to .bashrc/.zshrc</p>
+      <p className="font-semibold">Add to .bashrc/.zshrc</p>
 
-      <code tw="bg-gray-800  w-full  p-2 text-white text-sm ">
-        <div></div>
+      <code className="bg-gray-800 font-mono w-full p-2 text-white text-sm ">
         {`function kill-port(){`}
         <br />
-        <span>&#9;{`lsof -ti :$1 | xargs kill`}</span>
+        <span>&nbsp;&nbsp;{`lsof -ti :$1 | xargs kill`}</span>
         <br />
         {`}`}
       </code>
-      <p>Then: </p>
+      <p className="font-semibold">Then: </p>
 
-      <code tw="bg-gray-800  w-full  p-2 text-white text-sm">
-        <span tw="select-none">~ </span>
+      <code className="bg-gray-800  w-full  p-2 text-white text-sm">
+        <span className="select-none text-pink-400">~ </span>
         kill-port 3000
       </code>
     </>

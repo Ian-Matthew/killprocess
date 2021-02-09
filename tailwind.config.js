@@ -7,20 +7,21 @@ module.exports = {
         brand: ["Rubik Mono One"],
       },
 
-      animation: {
-        "fade-out-down": "fade-out-down 1s ease-out",
-      },
       keyframes: {
-        "fade-out-down": {
+        "fade-in-and-out": {
           "0%": {
-            opacity: "1",
-            // transform: "translate-y(0%)",
+            transform: "translateY(-100%)",
+          },
+          "30%, 70%": {
+            transform: "translateY(0)",
           },
           "100%": {
-            opacity: "0",
-            // transform: "translate-y(100%)",
+            transform: "translateY(100%)",
           },
         },
+      },
+      animation: {
+        "fade-in-and-out": "fade-in-and-out 1s ease-in-out 0s forwards",
       },
     },
   },
