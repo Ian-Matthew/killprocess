@@ -14,6 +14,9 @@ export default function About() {
           content="Do you often struggle finding a simple way to kill a process running on a port? Here's a few easy ways to fix it"
         />
       </Head>
+      <h1 className="text-lg xs:text-xl font-semibold mb-4">
+        uh, what is this?
+      </h1>
       <ul className="space-y-5">
         <li>
           Do you have a process running in the background and you need to stop

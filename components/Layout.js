@@ -18,10 +18,10 @@ export const Layout = ({ children }) => {
 
 const Header = () => {
   return (
-    <header className="flex flex-row w-full justify-between items-center max-w-screen-xl mt-5">
+    <header className="flex flex-row w-full justify-between items-center max-w-screen-xl my-5">
       <div className="flex flex-row items-center">
         <NextLink href="/">
-          <a className="text-lg sm:text-xl font-semibold">killprocess.dev</a>
+          <a className="text-lg xs:text-xl font-semibold">killprocess.dev</a>
         </NextLink>
       </div>
       <Navigation></Navigation>

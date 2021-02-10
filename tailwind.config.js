@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        xs: "420px",
+      },
       fontFamily: {
         rubik: ["Rubik", "sans-serif"],
         brand: ["Rubik Mono One"],

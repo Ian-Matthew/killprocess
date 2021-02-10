@@ -13,7 +13,7 @@ export default function Bash() {
           content="A simple way to kill a process running on a port using a bash script. Just copy this bash script into your .bashrc/.zshrc, source the file and run the command."
         />
       </Head>
-      <h1 className="text-xl font-semibold mb-4">bash script</h1>
+      <h1 className="text-lg xs:text-xl font-semibold mb-4">bash script</h1>
       <div className="space-y-3 flex flex-col w-full">
         <p className="font-semibold">add to .bashrc/.zshrc</p>
 
