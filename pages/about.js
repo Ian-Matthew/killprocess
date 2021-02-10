@@ -23,7 +23,7 @@ export default function About() {
           competent software engineer with actual computer skills?
         </li>
         <li>
-          Do you search through the same ten or so stack overflow posts to solve
+          Do you search through the same ten or so Stack Overflow posts to solve
           this problem, hoping you will eventually find the one?
         </li>
         <li>
