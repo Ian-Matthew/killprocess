@@ -48,7 +48,9 @@ export default function Home() {
   return (
     <div className="space-y-3">
       <Head>
-        <title>Kill Process</title>
+        <title>
+          Kill Process | Never forget how to kill a phantom process again
+        </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
