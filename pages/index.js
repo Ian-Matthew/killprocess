@@ -56,6 +56,7 @@ export default function Home() {
           name="description"
           content="The easiest way to kill a process running on a port."
         />
+        <meta charSet="utf-8" />
       </Head>
       <div className="flex flex-col w-full relative">
         <h1 className="text-xl font-semibold mb-4">

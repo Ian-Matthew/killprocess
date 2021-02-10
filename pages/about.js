@@ -8,6 +8,7 @@ export default function About() {
       <Head>
         <title>Kill Process | About</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="utf-8" />
         <meta
           name="description"
           content="Do you often struggle finding a simple way to kill a process running on a port? Here's a few easy ways to fix it"

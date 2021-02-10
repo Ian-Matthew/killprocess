@@ -7,6 +7,7 @@ export default function Bash() {
       <Head>
         <title>Kill Process | Bash Script</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta charSet="utf-8" />
         <meta
           name="description"
           content="A simple way to kill a process running on a port using a bash script. Just copy this bash script into your .bashrc/.zshrc, source the file and run the command."
