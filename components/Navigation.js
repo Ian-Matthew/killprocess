@@ -1,18 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import NextLink from "next/link";
 import classNames from "classnames";
 
-export function Navigation() {
+export const Navigation = () => {
   return (
-    <header className="flex flex-row w-full justify-end items-center max-w-screen-xl mt-5">
-      <nav className="flex flex-row items-center space-x-3 ">
-        <NavLink href="/">home</NavLink>
-        <NavLink href="/bash">bash script</NavLink>
-      </nav>
-    </header>
+    <nav className="flex flex-row items-center space-x-3 ">
+      <NavLink href="/">home</NavLink>
+      <NavLink href="/about">about</NavLink>
+      <NavLink href="/bash">bash script</NavLink>
+    </nav>
   );
-}
+};
 
 const NavLink = ({ href, children, ...props }) => {
   const router = useRouter();
@@ -22,8 +21,18 @@ const NavLink = ({ href, children, ...props }) => {
     { "text-pink-500 hover:text-pink-500 font-bold": active }
   );
   return (
-    <Link {...props} href={href}>
+    <NextLink {...props} href={href}>
       <a className={linkClasses}>{children}</a>
-    </Link>
+    </NextLink>
+  );
+};
+
+export const InlineLink = ({ href, children, ...props }) => {
+  return (
+    <NextLink {...props} href={href}>
+      <a className="cursor-pointer underline hover:text-blue-300 text-blue-500 font-medium">
+        {children}
+      </a>
+    </NextLink>
   );
 };

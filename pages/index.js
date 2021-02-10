@@ -46,13 +46,13 @@ export default function Home() {
   }, [portInputRef.current]);
 
   return (
-    <>
+    <div className="space-y-3">
       <Head>
         <title>Kill Process</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           name="description"
-          content="A simple way to kill a process running on a port"
+          content="The easiest way to kill a process running on a port."
         />
       </Head>
       <div className="flex flex-col w-full relative">
@@ -70,7 +70,12 @@ export default function Home() {
         <div className="relative flex items-center justify-between flex-row flex-1 w-full">
           <div className="absolute right-5 text-xs text-gray-400 overflow-hidden">
             <div className="relative">
-              <span>
+              <span
+                className={classNames(
+                  "transition-opacity duration-500",
+                  port ? "opacity-100" : "opacity-0"
+                )}
+              >
                 <strong className="font-medium">return/enter</strong> to copy
               </span>
               {!!copied && (
@@ -126,7 +131,7 @@ export default function Home() {
           <span>copy</span>
         </button>
       </code>
-    </>
+    </div>
   );
 }
 
