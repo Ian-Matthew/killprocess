@@ -13,12 +13,13 @@ export const Navigation = () => {
   );
 };
 
-const NavLink = ({ href, children, ...props }) => {
+const NavLink = ({ href, children, className, ...props }) => {
   const router = useRouter();
   const active = router.pathname === href;
   const linkClasses = classNames(
     "cursor-pointer hover:text-black text-gray-500 font-medium",
-    { "text-pink-500 hover:text-pink-500 font-bold": active }
+    { "text-pink-500 hover:text-pink-500 font-bold": active },
+    className
   );
   return (
     <NextLink {...props} href={href}>

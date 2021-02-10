@@ -21,7 +21,7 @@ const Header = () => {
     <header className="flex flex-row w-full justify-between items-center max-w-screen-xl mt-5">
       <div className="flex flex-row items-center">
         <NextLink href="/">
-          <a className="text-xl font-semibold">killprocess.dev</a>
+          <a className="text-lg sm:text-xl font-semibold">killprocess.dev</a>
         </NextLink>
       </div>
       <Navigation></Navigation>
