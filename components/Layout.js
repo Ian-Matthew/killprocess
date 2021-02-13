@@ -9,7 +9,7 @@ export const Layout = ({ children }) => {
       <main className="flex flex-1 justify-center flex-col w-full relative  max-w-prose">
         {children}
       </main>
-      <footer className="flex w-full flex-row max-w-screen-xl justify-center items-center text-sm text-gray-400">
+      <footer className="flex w-full my-5 flex-row max-w-screen-xl justify-center items-center text-sm ">
         <span>made by Ian Matthew Sobule</span>
       </footer>
     </div>

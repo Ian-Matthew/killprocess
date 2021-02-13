@@ -46,7 +46,7 @@ export default function Home() {
   }, [portInputRef.current]);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 w-full">
       <Head>
         <title>
           Kill Process | Never forget how to kill a phantom process again
@@ -115,7 +115,7 @@ export default function Home() {
 
         <button
           onClick={copyCode}
-          className="select-none flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 focus:ring-pink-200 px-2"
+          className="select-none hidden xs:flex flex-row items-center space-x-1 focus:outline-none  focus:ring-1 focus:ring-pink-200 px-2"
         >
           <svg
             className="h-4"
