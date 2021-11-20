@@ -16,8 +16,8 @@ export default function About() {
       </Head>
       <section>
         <div className="space-y-5">
-          <h1 className="text-lg xs:text-xl font-semibold mb-4">
-          What is KillProcess.dev?
+          <h1 className="text-lg xs:text-xl font-semibold mb-4 lowercase">
+          What is killprocess.dev?
           </h1>
           <p>
             Do you have a process running in the background and you need to stop
