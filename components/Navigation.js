@@ -20,7 +20,7 @@ const NavLink = ({ href, children, className, ...props }) => {
   const active = router.pathname === href;
   const linkClasses = classNames(
     "cursor-pointer hover:text-black text-gray-500 font-medium text-sm xs:text-base",
-    { "text-pink-500 hover:text-pink-500 font-bold": active },
+    { "text-pink-600 hover:text-pink-600 font-bold": active },
     className
   );
   return (
@@ -33,7 +33,7 @@ const NavLink = ({ href, children, className, ...props }) => {
 export const InlineLink = ({ href, children, ...props }) => {
   return (
     <NextLink {...props} href={href}>
-      <a className="cursor-pointer underline hover:text-blue-300 text-blue-500 font-medium">
+      <a className="cursor-pointer underline hover:text-blue-300 text-blue-600 font-medium">
         {children}
       </a>
     </NextLink>
