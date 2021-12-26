@@ -9,8 +9,8 @@ export const Layout = ({ children }) => {
       <main className="flex flex-1 justify-center flex-col w-full relative  max-w-prose">
         {children}
       </main>
-      <footer className="flex w-full my-5 flex-row max-w-screen-xl justify-center items-center text-sm ">
-        <span>made by Ian Matthew Sobule</span>
+      <footer className="flex w-full my-5 flex-row max-w-screen-xl justify-center items-center text-lg ">
+        <span>made by <a className="text-pink-500 font-bold underline transition-all text-opacity-100 hover:text-opacity-60" href="https://www.ianmatthew.so/bule">Ian Matthew Sobule</a></span>
       </footer>
     </div>
   );
